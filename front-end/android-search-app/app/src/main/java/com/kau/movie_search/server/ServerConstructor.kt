@@ -8,10 +8,16 @@ import java.util.concurrent.TimeUnit
 
 class ServerConstructor {
 
-    private var url : String = "http://"
+    private var url : String = ""
 
-    fun getService () : ServerInterface {
-
+    fun getService (type : String) : ServerInterface {
+        url = when (type) {
+            "chat" -> {
+                "https://w2wg7nk6bj.execute-api.us-east-1.amazonaws.com"
+            } else -> {
+                ""
+            }
+        }
         val client = OkHttpClient.Builder()
                 .connectTimeout(20, TimeUnit.SECONDS)
                 .writeTimeout(20, TimeUnit.SECONDS)
