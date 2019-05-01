@@ -36,6 +36,7 @@ class ChatBotActivity : AppCompatActivity() {
     }
 
     private fun initModel () {
+        chats.add(ChatData("2", "'무비'를 불러주세요 ! :)"))
     }
 
     private fun initRecycler () {
