@@ -4,9 +4,9 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.telephony.TelephonyManager
@@ -18,6 +18,7 @@ import java.util.*
 
 class ChatBotActivity : AppCompatActivity() {
 
+    private val serverHandler = ServerHandler()
     lateinit var chatAdapter : ChatAdapter
     lateinit var chatLayoutManager : RecyclerView.LayoutManager
     var chats = ArrayList<ChatData> ()
@@ -32,15 +33,13 @@ class ChatBotActivity : AppCompatActivity() {
         aboutView()
 
         setupPermission()
-
-
     }
 
     private fun initModel () {
     }
 
     private fun initRecycler () {
-        chatAdapter = ChatAdapter(chats, this)
+        chatAdapter = ChatAdapter(chats, Random().nextInt(3))
         recyclerChat.adapter = chatAdapter
 
         chatLayoutManager = LinearLayoutManager(this)
@@ -51,12 +50,12 @@ class ChatBotActivity : AppCompatActivity() {
 
     private fun aboutView () {
         btnChat.setOnClickListener {
-//            val chatData = ChatData(deviceUuid, editChat.text.toString())
-            val chatData = ChatData(deviceUuid, "한글 메시지")
-            chats.add(chatData)
-            editChat.setText("")
-            val serverHandler = ServerHandler()
-            serverHandler.postChat(chatData, this)
+            if (editChat.text.toString() != "") {
+                val chatData = ChatData(deviceUuid, editChat.text.toString())
+                chats.add(chatData)
+                editChat.setText("")
+                serverHandler.postChat(chatData, this)
+            }
         }
     }
 

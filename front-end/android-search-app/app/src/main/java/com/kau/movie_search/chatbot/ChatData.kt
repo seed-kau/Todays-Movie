@@ -1,4 +1,4 @@
 package com.kau.movie_search.chatbot
 
-class ChatData (val id : String, val message : String){
+class ChatData (var id : String, val message : String){
 }
