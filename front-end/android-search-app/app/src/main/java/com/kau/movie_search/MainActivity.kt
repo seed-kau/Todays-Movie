@@ -1,9 +1,10 @@
 package com.kau.movie_search
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import com.kau.movie_search.chatbot.ChatBotActivity
+import com.kau.movie_search.keyword.KeywordActivity
 import com.kau.movie_search.search.SearchActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -25,6 +26,11 @@ class MainActivity : AppCompatActivity() {
 
         btnToChat.setOnClickListener {
             val intent = Intent (this, ChatBotActivity::class.java)
+            startActivity(intent)
+        }
+
+        btntoKeyword.setOnClickListener {
+            val intent = Intent (this, KeywordActivity::class.java)
             startActivity(intent)
         }
     }

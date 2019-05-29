@@ -3,6 +3,7 @@ package com.kau.movie_search.search
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.RecyclerView
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.kau.movie_search.R
 
+@Suppress("DEPRECATION")
 class MovieAdapter (val movies : ArrayList<Movie>, val context : SearchActivity) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -29,8 +31,8 @@ class MovieAdapter (val movies : ArrayList<Movie>, val context : SearchActivity)
         } else {
             movieData.director
         }
-        holder.searchTitle.text = movieData.title
-        holder.searchSubTitle.text = movieData.subTitle
+        holder.searchTitle.text = Html.fromHtml(movieData.title)
+        holder.searchSubTitle.text = Html.fromHtml(movieData.subTitle)
         holder.searchPubDate.text = movieData.pubDate
         holder.searchDirector.text = director
         holder.searchUserRating.text = movieData.userRating

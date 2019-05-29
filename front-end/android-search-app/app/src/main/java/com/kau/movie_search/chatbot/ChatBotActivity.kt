@@ -55,6 +55,7 @@ class ChatBotActivity : AppCompatActivity() {
                 val chatData = ChatData(deviceUuid, editChat.text.toString())
                 chats.add(chatData)
                 editChat.setText("")
+                chatLayoutManager.scrollToPosition(chats.size - 1)
                 serverHandler.postChat(chatData, this)
             }
         }

@@ -4,53 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".search.SearchActivity"
-    tools:layout_editor_absoluteY="25dp">
+    tools:context=".keyword.KeywordActivity">
 
     <EditText
-        android:id="@+id/editMovie"
+        android:id="@+id/editTextKeyword"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="영화 제목을 입력 해 주세요."
-        android:imeOptions="actionSearch"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/btnSearch"
+        android:imeOptions="actionSearch"
+        android:hint="키워드를 입력 해 주세요"
+        app:layout_constraintEnd_toStartOf="@+id/btnKeyword"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/btnSearch"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:id="@+id/btnKeyword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_search_category_default" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerMovie"
+        android:id="@+id/recyclerKeyword"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerSort" />
-
-    <Spinner
-        android:id="@+id/spinnerSort"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editMovie" />
-
+        app:layout_constraintTop_toBottomOf="@+id/editTextKeyword" />
 </android.support.constraint.ConstraintLayout>

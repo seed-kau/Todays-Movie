@@ -4,6 +4,9 @@ import android.widget.Toast
 import com.kau.movie_search.chatbot.ChatBotActivity
 import com.kau.movie_search.chatbot.ChatData
 import com.kau.movie_search.chatbot.ChatResponse
+import com.kau.movie_search.keyword.KeywordActivity
+import com.kau.movie_search.keyword.KeywordRequest
+import com.kau.movie_search.keyword.MovieKeyword
 import com.kau.movie_search.search.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,6 +23,7 @@ class ServerHandler {
         serverCall.enqueue(object : Callback<ArrayList<Movie>> {
             override fun onFailure(call: Call<ArrayList<Movie>>, t: Throwable) {
                 Toast.makeText(context, "잠시 후 다시 시도 해 주세요.", Toast.LENGTH_LONG).show()
+                println (t)
             }
 
             override fun onResponse(call: Call<ArrayList<Movie>>, response: Response<ArrayList<Movie>>) {
@@ -63,7 +67,7 @@ class ServerHandler {
             override fun onResponse(call: Call<MovieDetail>, response: Response<MovieDetail>) {
                 var platform = ""
                 for (i in response.body()!!.platform) {
-                    platform += when (i) {
+                    platform += when (i.provider_id) {
                         8 -> "Netflix/"
                         97 -> "Watcha/"
                         3 -> "Google play movie/"
@@ -79,6 +83,23 @@ class ServerHandler {
                     platform = platform.substring(0, platform.length - 1)
                 }
                 context.detailPlatform.text = platform
+            }
+
+        })
+    }
+
+    fun getKeyword (keywordRequest : KeywordRequest, context : KeywordActivity) {
+        serverInterface = ServerConstructor().getService()
+        val serverCall = serverInterface.getKeyWord(x_api_key, keywordRequest)
+        serverCall.enqueue (object : Callback<ArrayList<MovieKeyword>> {
+            override fun onFailure(call: Call<ArrayList<MovieKeyword>>, t: Throwable) {
+                println (t)
+            }
+
+            override fun onResponse(call: Call<ArrayList<MovieKeyword>>, response: Response<ArrayList<MovieKeyword>>) {
+                context.keywords.clear()
+                context.keywords.addAll(response.body()!!)
+                context.keywordAdapter.notifyDataSetChanged()
             }
 
         })

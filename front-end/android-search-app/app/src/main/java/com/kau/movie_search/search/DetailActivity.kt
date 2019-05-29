@@ -2,12 +2,14 @@ package com.kau.movie_search.search
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.text.Html
 import android.widget.ImageView
 import android.widget.TextView
 import com.kau.movie_search.R
 import com.kau.movie_search.server.ServerHandler
 import kotlinx.android.synthetic.main.activity_detail.*
 
+@Suppress("DEPRECATION")
 class DetailActivity : AppCompatActivity() {
 
     lateinit var movieData : Movie
@@ -40,15 +42,14 @@ class DetailActivity : AppCompatActivity() {
         var actors = ""
         if (actorList.size > 2) {
             for (i in 0..2) {
-                actors += actorList[i]
+                actors += actorList[i] + " "
             }
         } else {
             actors = movieData.actor
         }
         actors = actors.substring(0, actors.length - 1)
 
-        detailTitle.text = movieData.title
-        detailSubTitle.text = movieData.subTitle
+        detailTitle.text = Html.fromHtml(movieData.title)
         detailPubDate.text = movieData.pubDate
         detailDirector.text = director
         detailActor.text = actors
