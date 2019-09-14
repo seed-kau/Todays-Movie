@@ -1,0 +1,27 @@
+{
+  "name": "todays-movie",
+  "version": "1.0.0",
+  "description": "today's movie",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seed-kau/Todays-Movie.git"
+  },
+  "keywords": [
+    "aws"
+  ],
+  "author": "Danpatpang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seed-kau/Todays-Movie/issues"
+  },
+  "homepage": "https://github.com/seed-kau/Todays-Movie#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "got": "^9.6.0",
+    "request": "^2.88.0"
+  }
+}
