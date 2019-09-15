@@ -23,7 +23,7 @@
 
 3. 키워드 검색을 통해 유저가 기억하고 싶은 영화 정보를 검색해준다.
 
-자세한 내용은 [다음]()을 참고해주세요.
+자세한 내용은 [다음](./Today's%20Movie.pdf)을 참고해주세요.
 
 ### Architecture
 ![architecture](images/architecture.png)
